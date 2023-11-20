@@ -1,0 +1,17 @@
+{
+  "name": "App Grosir Sederhana",
+  "short_name": "grosir",
+  "description": "Membuat Aplikasi Grosir sederhana dengan javascript PWA",
+  "icons": [
+    {
+      "src": "images/soffi grosir.png",
+      "sizes": "362x516",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#D8BFD8",
+  "background_color": "#D8BFD8",
+  "prefer_related_applications": false
+}

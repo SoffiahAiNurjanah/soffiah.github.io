@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi Grosir Sembako</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: thistle;
+    }
+
+    form {
+      margin: 20px auto;
+      max-width: 400px;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Grosir Sembako Soffi</h1>
+
+  <form id="formBarang">
+    <label for="nama">Nama Barang:</label><br>
+    <input type="text" id="nama" required><br>
+    <label for="jumlah">Jumlah:</label><br>
+    <input type="number" id="jumlah" required><br>
+    <label for="harga">Harga:</label><br>
+    <input type="number" id="harga" required><br>
+    <button type="submit">Tambah</button><br>
+  </form>
+
+  <table id="daftarBarang" style="width: 30%" align="center">
+    <tr>
+      <th>Nama Barang</th>
+      <th>Jumlah</th>
+      <th>Harga</th>
+      <th>Aksi</th>
+    </tr>
+  </table>
+  <script src="fungsi.js"></script>
+  <script src="register.js"></script>
+</body>
+
+</html>
