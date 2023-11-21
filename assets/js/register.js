@@ -1,8 +1,14 @@
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    this.navigator.serviceWorker
-      .register("/service-worker.js")
-      .then(res => console.log("service worker berhasil"))
-      .catch(err => console.log("service worker gagal", err))
-  })
+document.addEventListener("DOMContentLoaded", init, false);
+
+function init() {
+  if ("serviceWorker" in navigator && navigator.onLine) {
+    navigator.serviceWorker.register("/service-worker.js").then(
+      (reg) => {
+        console.log("Registrasi service worker Berhasil", reg);
+      },
+      (err) => {
+        console.error("Registrasi service worker Gagal", err);
+      }
+    );
+  }
 }
