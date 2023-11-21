@@ -1,9 +1,9 @@
-const CACHE_NAME = "SW-001";
-const toCache = [
+const staticGrosir = "SW-001";
+const assets = [
   "/",
   "manifest.json",
-  "register.js",
-  "images/soffi grosir.png",
+  "assets/js/register.js",
+  "assets/images/soffi grosir.png",
 ];
 
 let deferredPrompt;
@@ -15,35 +15,18 @@ self.addEventListener("beforeinstallprompt", (e) => {
   showInstallPromotion();
 });
 
-self.addEventListener("install", function (event) {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll(toCache);
+self.addEventListener("install", installEvent => {
+  installEvent.waitUntil(
+    caches.open(staticGrosir).then(cache => {
+      cache.addAll(assets)
     })
   );
 });
 
-self.addEventListener("fetch", function (event) {
-  event.respondWith(
-    fetch(event.request).catch(() => {
-      return caches.open(CACHE_NAME).then((cache) => {
-        return cache.match(event.request);
-      });
-    })
-  );
-});
-
-self.addEventListener("activate", function (event) {
-  event.waitUntil(
-    caches.keys().then((keyList) => {
-      return Promise.all(
-        keyList.map((key) => {
-          if (key !== CACHE_NAME) {
-            console.log("[ServiceWorker] Hapus cache lama", key);
-            return caches.delete(key);
-          }
-        })
-      );
+self.addEventListener("fetch", fetchEvent => {
+  fetchEvent.respondWith(
+    caches.match(fetchEvent.request).then(res => {
+      return res || fetch(fetchEvent.request)
     })
   );
 });
