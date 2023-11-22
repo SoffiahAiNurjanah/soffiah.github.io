@@ -39,3 +39,4 @@ function deleteRow(button) {
   var row = button.parentNode.parentNode;
   row.remove();
 }
+
